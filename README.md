@@ -1,3 +1,3 @@
-# volcano-dummy-ai
+# volcano--ai
 For Artificial Intelligence Final Task 
 #wedidit.
