@@ -1,2 +1,3 @@
 # volcano-dummy-ai
-Dummy program for final task
+For Artificial Intelligence Final Task 
+#wedidit.
