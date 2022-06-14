@@ -13,7 +13,7 @@ def evacuation(d1,d2,d3):
 
 def kondisi():
     print ("Kondisi Gunung Berapi")
-    print("-----------------------")
+    print ("-----------------------")
     print ("Getaran : ", getaran)
     print ("Deformasi Tanah : ", deformasi_tanah)
     print ("Aktivitas Kawah : ", kawah)
@@ -21,7 +21,7 @@ def kondisi():
     if kawah == "Berkabut":
         print ("Warna Asap : ", warna)
         print ("Ketebalan Asap : ", tebal)
-    
+        
 
 def randomise (data, key):
     x = random.choice(data[key])
@@ -33,6 +33,112 @@ def tuple_gen(var1,var2):
     emp1.append(float(var1))
     tup = tuple(emp1)
     return tup
+
+def cek_aktivitas(dist_mount, deformasi_tanah, getaran, kawah, warna, tebal):
+        if dist_mount<=10.0:
+            kondisi()
+            if getaran == "< 1.5 SR":
+                if kawah == "Berkabut":
+                    if warna == "Terang":
+                        if tebal == True:
+                            print("Status: Normal")
+                        else:
+                            print("Status: Normal")
+                    else:
+                        if tebal == True:   
+                            print("Status: Normal")
+                        else:
+                            print("Status: Normal")
+                else:
+                    print("Status: Normal")
+            elif  getaran == "1.5 SR - 3.5 SR":
+                if deformasi_tanah == True:
+                    if kawah == "Berkabut":
+                        if warna == "Terang":
+                            if tebal == True:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                            else:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                        else:
+                            if tebal == True:   
+                                print("Status: Siaga")
+                                print("Silahkan Mencari Tempat Evakuasi Terdekat")
+                                evacuation(dist1, dist2, dist3)
+                            else:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                    else:
+                        print("Status: Normal")
+                else:
+                    if kawah == "Berkabut":
+                        if warna == "Terang":
+                            if tebal == True:
+                                print("Status: Normal")
+                            else:
+                                print("Status: Normal")
+                        else:
+                            if tebal == True:   
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                            else:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                    else:
+                        print("Status: Normal")
+            elif  getaran == "> 3.5 SR":
+                if deformasi_tanah == True:
+                    if kawah == "Berkabut":
+                        if warna == "Gelap":
+                            if tebal == True:
+                                print("Status: Siaga")
+                                print("Silahkan Mencari Tempat Evakuasi Terdekat")
+                                evacuation(dist1, dist2, dist3)
+                            elif tebal == False:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                        elif warna == "Terang":
+                            if tebal == True:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                            elif tebal == False:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+
+                    elif kawah == "Tidak Berkabut":
+                        print("Status: Normal")
+
+                elif deformasi_tanah == False:
+                    if kawah == "Berkabut":
+                        if warna == "Gelap":
+                            if tebal == True:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                            elif tebal == False:
+                                print("Status: Waspada")
+                                print("Disarankan Evakuasi")
+                                evacuation(dist1, dist2, dist3)
+                        elif warna == "Terang":
+                            if tebal == True:
+                                print("Status: Normal")
+                            elif tebal == False:
+                                print("Status: Waspada")
+                                evacuation(dist1, dist2, dist3)
+                    else:
+                        print("Status: Normal")
+        else:
+            kondisi()
+            print("Anda berada diluar jangkauan letusan")
 
 try:
     geolocator = Nominatim(user_agent="GetLoc")
@@ -84,112 +190,9 @@ try:
     warna  = randomise(data, "Warna Asap")
     tebal = randomise(data,"Ketebalan Asap")
 
-
-    if dist_mount<=10.0:
-        kondisi()
-        if getaran == "< 1.5 SR":
-            if kawah == "Berkabut":
-                if warna == "Terang":
-                    if tebal == True:
-                        print("Status: Normal")
-                    else:
-                        print("Status: Normal")
-                else:
-                    if tebal == True:   
-                        print("Status: Normal")
-                    else:
-                        print("Status: Normal")
-            else:
-                print("Status: Normal")
-        elif  getaran == "1.5 SR - 3.5 SR":
-            if deformasi_tanah == True:
-                if kawah == "Berkabut":
-                    if warna == "Terang":
-                        if tebal == True:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                        else:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                    else:
-                        if tebal == True:   
-                            print("Status: Siaga")
-                            print("Silahkan Mencari Tempat Evakuasi Terdekat")
-                            evacuation(dist1, dist2, dist3)
-                        else:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                else:
-                    print("Status: Normal")
-            else:
-                if kawah == "Berkabut":
-                    if warna == "Terang":
-                        if tebal == True:
-                            print("Status: Normal")
-                        else:
-                            print("Status: Normal")
-                    else:
-                        if tebal == True:   
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                        else:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                else:
-                    print("Status: Normal")
-        elif  getaran == "> 3.5 SR":
-            if deformasi_tanah == True:
-                if kawah == "Berkabut":
-                    if warna == "Gelap":
-                        if tebal == True:
-                            print("Status: Siaga")
-                            print("Silahkan Mencari Tempat Evakuasi Terdekat")
-                            evacuation(dist1, dist2, dist3)
-                        elif tebal == False:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                    elif warna == "Terang":
-                        if tebal == True:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                        elif tebal == False:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-
-                elif kawah == "Tidak Berkabut":
-                    print("Status: Normal")
-
-            elif deformasi_tanah == False:
-                if kawah == "Berkabut":
-                    if warna == "Gelap":
-                        if tebal == True:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                        elif tebal == False:
-                            print("Status: Waspada")
-                            print("Disarankan Evakuasi")
-                            evacuation(dist1, dist2, dist3)
-                    elif warna == "Terang":
-                        if tebal == True:
-                            print("Status: Normal")
-                        elif tebal == False:
-                            print("Status: Waspada")
-                            evacuation(dist1, dist2, dist3)
-                else:
-                    print("Status: Normal")
-    else:
-        kondisi()
-        print("Anda berada diluar jangkauan letusan")
-except :
+    cek_aktivitas(dist_mount,deformasi_tanah, getaran, kawah, warna, tebal)
+    
+except:
     print("Cek kembali data anda")
 
 #TC1 = High
